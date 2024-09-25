@@ -53,10 +53,10 @@ except Exception as e:
 #loaded_model.load_weights("model11.weights.h5")
 
 # Manually load the embedding matrix
-embedding_matrix = np.load('embedding_matrix11.npy')  # Load the pre-saved embedding matrix
+#embedding_matrix = np.load('embedding_matrix11.npy')  # Load the pre-saved embedding matrix
 
 # Reassign the embedding weights to the model
-loaded_model.layers[0].set_weights([embedding_matrix])
+#loaded_model.layers[0].set_weights([embedding_matrix])
 
 # Function to generate summary based on input
 def generate_summary(seed_text, max_length=50):
