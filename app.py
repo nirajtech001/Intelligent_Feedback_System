@@ -18,12 +18,14 @@ with open('tokenizer.pkl', 'rb') as f:
 import streamlit as st
 from tensorflow.keras.models import model_from_json
 
+
+
 st.title("Model Loader Test")
 
 try:
     with open("model11.json", "r") as json_file:
         model_json = json_file.read()
-    loaded_model = model_from_json(model_json, custom_objects={"MyCustomLayer": MyCustomLayer})  # Add custom layers if needed
+    loaded_model = model_from_json(model_json)
     loaded_model.load_weights("model11.weights.h5")
     st.success("Model loaded successfully!")
     st.text(loaded_model.summary())
@@ -32,7 +34,7 @@ except Exception as e:
 
 
 # Load the saved weights (excluding embedding)
-loaded_model.load_weights("model11.weights.h5")
+#loaded_model.load_weights("model11.weights.h5")
 
 # Manually load the embedding matrix
 embedding_matrix = np.load('embedding_matrix11.npy')  # Load the pre-saved embedding matrix
