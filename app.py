@@ -20,45 +20,31 @@ from tensorflow.keras.models import model_from_json
 
 
 
-import streamlit as st
-import numpy as np
-from tensorflow.keras.models import model_from_json
-from tensorflow.keras.layers import Embedding
-import os
-
 st.title("Model Loader Test")
 
-# Print the current directory for verification
-st.text(f"Current directory: {os.getcwd()}")
-
 try:
-    # Load the model architecture
+    # Load model architecture
     with open("model11.json", "r") as json_file:
         model_json = json_file.read()
         
     loaded_model = model_from_json(model_json)
-    
-    # Load the model weights
+
+    # Load the saved weights (excluding embedding)
     loaded_model.load_weights("model11.weights.h5")
+
+    # Ensure embedding_matrix is defined and properly shaped
+    # Replace this with your actual embedding matrix loading logic
+    embedding_matrix = np.load("embedding_matrix11.npy")
+
+    # Assuming the first layer is an Embedding layer
+    if isinstance(loaded_model.layers[0], Embedding):
+        loaded_model.layers[0].set_weights([embedding_matrix])
+        
     st.success("Model loaded successfully!")
-    
-    # Load the embedding matrix
-    if os.path.exists("embedding_matrix11.npy"):
-        embedding_matrix = np.load("embedding_matrix11.npy")
-        # Check if the first layer is an Embedding layer
-        if isinstance(loaded_model.layers[0], Embedding):
-            loaded_model.layers[0].set_weights([embedding_matrix])
-            st.text("Embedding weights set successfully.")
-        else:
-            st.error("The first layer is not an Embedding layer.")
-    else:
-        raise FileNotFoundError("embedding_matrix11.npy file not found.")
-    
-    # Print model summary
     st.text(loaded_model.summary())
     
 except Exception as e:
-    st.error(f"Error: {str(e)}")
+    st.error(f"Error loading model: {str(e)}")
 
 
 
