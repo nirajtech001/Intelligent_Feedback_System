@@ -23,6 +23,7 @@ from tensorflow.keras.models import model_from_json
 import streamlit as st
 import numpy as np
 from tensorflow.keras.models import model_from_json
+from tensorflow.keras.layers import Embedding
 import os
 
 st.title("Model Loader Test")
@@ -45,7 +46,7 @@ try:
     if os.path.exists("embedding_matrix11.npy"):
         embedding_matrix = np.load("embedding_matrix11.npy")
         # Check if the first layer is an Embedding layer
-        if isinstance(loaded_model.layers[0], keras.layers.Embedding):
+        if isinstance(loaded_model.layers[0], Embedding):
             loaded_model.layers[0].set_weights([embedding_matrix])
             st.text("Embedding weights set successfully.")
         else:
