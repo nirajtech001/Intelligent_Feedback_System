@@ -10,11 +10,6 @@ max_sequence_length = 60
 with open('tokenizer.pkl', 'rb') as f:
     tokenizer = pickle.load(f)
 
-# # Load model architecture
-# with open("model11.json", "r") as json_file:
-#     model_json = json_file.read()
-# loaded_model = model_from_json(model_json)
-
 import streamlit as st
 from tensorflow.keras.models import model_from_json
 from tensorflow.keras.layers import Embedding
@@ -48,6 +43,11 @@ except Exception as e:
     st.error(f"Error loading model: {str(e)}")
 
 
+
+# Load model architecture
+# with open("model11.json", "r") as json_file:
+#     model_json = json_file.read()
+# loaded_model = model_from_json(model_json)
 
 # Load the saved weights (excluding embedding)
 #loaded_model.load_weights("model11.weights.h5")
