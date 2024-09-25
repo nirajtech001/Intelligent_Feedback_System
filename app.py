@@ -10,10 +10,26 @@ max_sequence_length = 60
 with open('tokenizer.pkl', 'rb') as f:
     tokenizer = pickle.load(f)
 
-# Load model architecture
-with open("model11.json", "r") as json_file:
-    model_json = json_file.read()
-loaded_model = model_from_json(model_json)
+# # Load model architecture
+# with open("model11.json", "r") as json_file:
+#     model_json = json_file.read()
+# loaded_model = model_from_json(model_json)
+
+import streamlit as st
+from keras.models import model_from_json
+
+st.title("Model Loader Test")
+
+try:
+    with open("model11.json", "r") as json_file:
+        model_json = json_file.read()
+    loaded_model = model_from_json(model_json, custom_objects={"MyCustomLayer": MyCustomLayer})  # Add custom layers if needed
+    loaded_model.load_weights("model11.weights.h5")
+    st.success("Model loaded successfully!")
+    st.text(loaded_model.summary())
+except Exception as e:
+    st.error(f"Error loading model: {str(e)}")
+
 
 # Load the saved weights (excluding embedding)
 loaded_model.load_weights("model11.weights.h5")
