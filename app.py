@@ -77,7 +77,7 @@ st.write("""
 """)
 
 justified_text = """
-<div'>
+<div>
 This Module is a part of s a virtual project showcase platform designed to transform student presentations by adding a personal touch. Traditional showcases often lack engagement, so we introduced the SlamBook ML module, which generates personalized feedback based on Compliments, Questions, and Constructive Feedback. This AI-driven system celebrates achievements, inspires improvements, and provides students with a memorable digital souvenir. As an exclusive platform, It provides institutions a competitive edge by enhancing student engagement and recognition.
 </div>
 """
