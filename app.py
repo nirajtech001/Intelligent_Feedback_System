@@ -15,9 +15,6 @@ from tensorflow.keras.models import model_from_json
 from tensorflow.keras.layers import Embedding
 
 
-
-st.title("Model Loader Test")
-
 try:
     # Load model architecture
     with open("model11.json", "r") as json_file:
@@ -36,8 +33,6 @@ try:
     if isinstance(loaded_model.layers[0], Embedding):
         loaded_model.layers[0].set_weights([embedding_matrix])
         
-    st.success("Model loaded successfully!")
-    st.text(loaded_model.summary())
     
 except Exception as e:
     st.error(f"Error loading model: {str(e)}")
