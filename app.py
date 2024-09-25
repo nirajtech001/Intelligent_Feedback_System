@@ -10,21 +10,26 @@ max_sequence_length = 60
 with open('tokenizer.pkl', 'rb') as f:
     tokenizer = pickle.load(f)
 
+from tensorflow.keras.models import model_from_json
+from tensorflow.keras.initializers import Constant
+import numpy as np
+
 # Load model architecture
-# with open("model11.json", "r") as json_file:
-#     model_json = json_file.read()
-# loaded_model = model_from_json(model_json)
+with open("model11.json", "r") as json_file:
+    model_json = json_file.read()
+loaded_model = model_from_json(model_json)
 
 # Load the saved weights (excluding embedding)
-#loaded_model.load_weights("model11.weights.h5")
+loaded_model.load_weights("model11.weights.h5")
 
 # Manually load the embedding matrix
-#embedding_matrix = np.load('embedding_matrix11.npy')  # Load the pre-saved embedding matrix
+embedding_matrix = np.load('embedding_matrix11.npy')  # Load the pre-saved embedding matrix
 
 # Reassign the embedding weights to the model
-#loaded_model.layers[0].set_weights([embedding_matrix])
+loaded_model.layers[0].set_weights([embedding_matrix])
 
-# Function to generate summary based on input
+# prompt: use above model
+
 def generate_summary(seed_text, max_length=50):
     for _ in range(max_length):
         # Tokenize the input sequence
@@ -42,44 +47,17 @@ def generate_summary(seed_text, max_length=50):
     return seed_text.split('.')[-1].strip()
 
 # Streamlit app layout
-st.title("Intelligent Feedback System ")
-st.write("""
-### DT Project Showcase Module Demonstration
-""")
+st.title("Text Summarization App")
 
-justified_text = """
-<div style='text-align: justify;'>
-This Module is a part of s a virtual project showcase platform designed to transform student presentations by adding a personal touch. Traditional showcases often lack engagement, so we introduced the SlamBook ML module, which generates personalized feedback based on Compliments, Questions, and Constructive Feedback. This AI-driven system celebrates achievements, inspires improvements, and provides students with a memorable digital souvenir. As an exclusive platform, It provides institutions a competitive edge by enhancing student engagement and recognition.
-</div>
-"""
+input_text = st.text_area("Enter text for summarization:", height=200)
 
-# Display the justified text in Streamlit
-st.markdown(justified_text, unsafe_allow_html=True)
-st.write("""
-
-""")
-# Wider, one-liner input fields with placeholder hints
-input_compliment = st.text_input(
-    "Enter Compliments:", 
-    placeholder="e.g., The project's innovative approach to problem-solving is highly commendable.",
-)
-
-input_questions = st.text_input(
-    "Enter Questions:", 
-    placeholder="e.g., How did you validate the performance of your ML model?",
-)
-
-input_feedback = st.text_input(
-    "Enter Feedback:", 
-    placeholder="e.g., Constructive feedback on potential improvements and future research directions.",
-)
-
-# If the user clicks the button, generate the summary
 if st.button("Generate Summary"):
-    if input_compliment or input_questions or input_feedback:
-        input_text = input_compliment + " " + input_questions + " " + input_feedback
+    if input_text:
         generated_summary = generate_summary(input_text)
-        st.subheader("Summary and Takeaway:")
+        st.subheader("Model Suggestion:")
         st.write(generated_summary)
     else:
-        st.warning("Please enter Compliments, Questions, and Feedback to summarize.")
+        st.warning("Please enter some text to summarize.")
+
+
+
