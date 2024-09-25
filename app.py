@@ -55,7 +55,9 @@ This Module is a part of s a virtual project showcase platform designed to trans
 
 # Display the justified text in Streamlit
 st.markdown(justified_text, unsafe_allow_html=True)
+st.write("""
 
+""")
 # Wider, one-liner input fields with placeholder hints
 input_compliment = st.text_input(
     "Enter Compliments:", 
