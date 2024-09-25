@@ -14,7 +14,6 @@ import streamlit as st
 from tensorflow.keras.models import model_from_json
 from tensorflow.keras.layers import Embedding
 
-
 try:
     # Load model architecture
     with open("model11.json", "r") as json_file:
