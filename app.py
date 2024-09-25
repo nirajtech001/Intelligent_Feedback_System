@@ -16,7 +16,7 @@ with open('tokenizer.pkl', 'rb') as f:
 # loaded_model = model_from_json(model_json)
 
 import streamlit as st
-from keras.models import model_from_json
+from tensorflow.keras.models import model_from_json
 
 st.title("Model Loader Test")
 
