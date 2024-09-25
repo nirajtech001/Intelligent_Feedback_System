@@ -92,21 +92,13 @@ st.markdown(justified_text, unsafe_allow_html=True)
 st.write("""
 
 """)
-# Wider, one-liner input fields with placeholder hints
-input_compliment = st.text_input(
-    "Enter Compliments:", 
-    placeholder="e.g., The project's innovative approach to problem-solving is highly commendable.",
-)
 
-input_questions = st.text_input(
-    "Enter Questions:", 
-    placeholder="e.g., How did you validate the performance of your ML model?",
-)
+input_compliment = st.text_input("Enter Compliments:")
 
-input_feedback = st.text_input(
-    "Enter Feedback:", 
-    placeholder="e.g., Constructive feedback on potential improvements and future research directions.",
-)
+input_questions = st.text_input("Enter Questions:")
+
+input_feedback = st.text_input("Enter Feedback:")
+
 
 # If the user clicks the button, generate the summary
 if st.button("Generate Summary"):
