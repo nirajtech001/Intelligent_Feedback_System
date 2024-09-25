@@ -54,20 +54,42 @@ except Exception as e:
 
 # Function to generate summary based on input
 def generate_summary(seed_text, max_length=50):
+    output_text = seed_text  # Initialize output text with the seed text
     for _ in range(max_length):
-        # Tokenize the input sequence
-        seed_sequence = tokenizer.texts_to_sequences([seed_text])[0]
-        # Pad the input sequence
-        padded_seed_sequence = pad_sequences([seed_sequence], maxlen=max_sequence_length-1, padding='pre')
-        # Predict the next word
-        predicted_index = np.argmax(loaded_model.predict(padded_seed_sequence), axis=-1)
-        # Convert index to word
-        predicted_word = tokenizer.index_word.get(predicted_index[0], '')
-        # Update the seed text for the next iteration
-        seed_text += ' ' + predicted_word
-        if predicted_word == '.':
-            break  # Break if a period is predicted, assuming the end of a sentence
-    return seed_text.split('.')[-1].strip()
+        try:
+            # Tokenize the input sequence
+            seed_sequence = tokenizer.texts_to_sequences([output_text])[0]
+            # Pad the input sequence
+            padded_seed_sequence = pad_sequences([seed_sequence], maxlen=max_sequence_length-1, padding='pre')
+            
+            # Check input shape
+            if padded_seed_sequence.shape != (1, max_sequence_length - 1):
+                st.error("Input shape is not as expected.")
+                return output_text
+            
+            # Predict the next word
+            predictions = loaded_model.predict(padded_seed_sequence)
+            if predictions is None or len(predictions) == 0:
+                st.error("Model returned no predictions.")
+                return output_text
+            
+            predicted_index = np.argmax(predictions, axis=-1)
+            
+            # Convert index to word
+            predicted_word = tokenizer.index_word.get(predicted_index[0], '')
+            
+            # Update the output text for the next iteration
+            output_text += ' ' + predicted_word
+            
+            # Break if a period is predicted, assuming the end of a sentence
+            if predicted_word == '.':
+                break
+        except Exception as e:
+            st.error(f"Error during prediction: {str(e)}")
+            return output_text  # Return the current output text in case of error
+            
+    return output_text.split('.')[-1].strip()
+
 
 # Streamlit app layout
 st.title("Intelligent Feedback System ")
