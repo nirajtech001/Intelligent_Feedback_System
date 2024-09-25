@@ -35,9 +35,6 @@ try:
     # Assuming the first layer is an Embedding layer
     if isinstance(loaded_model.layers[0], Embedding):
         loaded_model.layers[0].set_weights([embedding_matrix])
-        
-    st.success("Model loaded successfully!")
-    st.text(loaded_model.summary())
     
 except Exception as e:
     st.error(f"Error loading model: {str(e)}")
