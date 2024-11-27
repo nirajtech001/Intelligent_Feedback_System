@@ -1,7 +1,7 @@
 
 ---
 
-# **Virtual Project Showcase Platform- IFS_SlamBook Module**  
+# **Virtual Project Showcase Platform- IFS_SB Module**  
 
 A virtual platform that provides students with an immersive project showcase experience, designed to enhance engagement and visibility beyond the limitations of a physical event.
 
