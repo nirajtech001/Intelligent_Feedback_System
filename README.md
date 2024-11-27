@@ -1,4 +1,3 @@
-Here's a **README** file draft for your project, which outlines its purpose, setup, and implementation details:  
 
 ---
 
