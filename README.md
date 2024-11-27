@@ -35,6 +35,15 @@ To give students a better experience than a physical showcase, enabling them to:
 6. **Memories and Recognition**  
    - AI Powered digital **Slam Book** capturing interactions and key takeaways.   
 
+**UX Journey**
+![image](https://github.com/user-attachments/assets/94d5d41b-37bc-4284-86eb-e5ee16b3aa4a)
+
+**User Interface**
+![image](https://github.com/user-attachments/assets/59961fd3-28f7-4303-b53f-7de11d3830e0)
+![image](https://github.com/user-attachments/assets/f7175651-c436-418c-82d9-030d0cbf2143)
+
+
+
 ---
 
 ## **Team Composition**  
@@ -171,6 +180,11 @@ print(model.summary())
 ```  
 
 ---
+
+### **Module Demonstration**
+![image](https://github.com/user-attachments/assets/901b7275-07c2-4813-8ad6-43d7dc2557fa)
+
+
 
 ## **Future Enhancements**  
 - Expand the ML module to include sentiment analysis from feedback.  
