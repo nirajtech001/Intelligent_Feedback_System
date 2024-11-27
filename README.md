@@ -53,11 +53,6 @@ To give students a better experience than a physical showcase, enabling them to:
 
 ## **Technical Implementation**  
 
-Here's the updated README section with **Data Loading and Preprocessing** included:
-
----
-
-# **Project Showcase Virtual Platform**
 
 ## **1. Installing Required Libraries**
 
@@ -144,17 +139,17 @@ padded_sequences = pad_sequences(sequences)
 
 This setup prepares the dataset for the next steps in building and training the LSTM-based model.
 
-### 2. **Embedding Layer**  
+### 6. **Embedding Layer**  
 - Downloaded and loaded **GloVe** embeddings (100d).  
 - Created an embedding matrix using pre-trained embeddings.  
 
-### 3. **Model Architecture**  
+### 7. **Model Architecture**  
 - Used an LSTM-based sequential model:  
   - Embedding layer initialized with GloVe vectors.  
   - Two LSTM layers (300 units each) with dropout for regularization.  
   - Dense layer with softmax activation for classification.  
 
-### 4. **Model Compilation**  
+### 8. **Model Compilation**  
 - Compiled using `adam` optimizer and categorical cross-entropy loss.  
 
 ### **Code Snippet for Model Definition**  
@@ -174,28 +169,6 @@ model.add(Dense(vocab_size, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])  
 print(model.summary())  
 ```  
-
----
-
-## **Installation and Setup**  
-1. **Clone the Repository**  
-   ```bash  
-   git clone <repo-url>  
-   cd showcase-arena  
-   ```  
-2. **Download GloVe Embeddings**  
-   ```bash  
-   wget https://nlp.stanford.edu/data/glove.6B.zip  
-   unzip glove.6B.zip  
-   ```  
-3. **Install Dependencies**  
-   ```bash  
-   pip install -r requirements.txt  
-   ```  
-4. **Run the Model Training**  
-   ```bash  
-   python train_model.py  
-   ```  
 
 ---
 
