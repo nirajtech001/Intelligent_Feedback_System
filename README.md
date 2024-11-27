@@ -38,10 +38,6 @@ To give students a better experience than a physical showcase, enabling them to:
 **UX Journey**
 ![image](https://github.com/user-attachments/assets/94d5d41b-37bc-4284-86eb-e5ee16b3aa4a)
 
-**User Interface**
-![image](https://github.com/user-attachments/assets/59961fd3-28f7-4303-b53f-7de11d3830e0)
-![image](https://github.com/user-attachments/assets/f7175651-c436-418c-82d9-030d0cbf2143)
-
 
 
 ---
